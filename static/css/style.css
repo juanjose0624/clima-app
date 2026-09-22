@@ -1,0 +1,171 @@
+/* ===== Variables de color ===== */
+:root {
+    --azul-cielo: #4a90e2;
+    --azul-oscuro: #1c3d5a;
+    --gris-texto: #6c757d;
+    --blanco-suave: #f8fbff;
+}
+
+/* ===== Fondo general ===== */
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 55%, #8aa3e8 100%);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--azul-oscuro);
+}
+
+.container {
+    flex: 1;
+}
+
+/* ===== Título ===== */
+h1 {
+    color: var(--azul-oscuro);
+    letter-spacing: -0.5px;
+}
+
+h1 i {
+    color: #f5a623;
+    filter: drop-shadow(0 2px 4px rgba(245, 166, 35, 0.4));
+}
+
+.text-muted {
+    color: #4d6a85 !important;
+}
+
+/* ===== Buscador ===== */
+#ciudadInput {
+    border-radius: 8px 0 0 8px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#btnBuscar {
+    background-color: var(--azul-cielo);
+    border: none;
+}
+
+#btnBuscar:hover {
+    background-color: #357abd;
+}
+
+#btnUbicacion {
+    border-radius: 0 8px 8px 0;
+    background-color: white;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Tarjeta clima actual ===== */
+#climaActual .card {
+    border: none;
+    border-radius: 20px;
+    background: white;
+    animation: aparecer 0.4s ease-in-out;
+    box-shadow: 0 15px 35px rgba(28, 61, 90, 0.18);
+}
+
+#climaActual .card-body {
+    padding: 2.5rem 2rem;
+}
+
+#temperatura {
+    color: var(--azul-cielo);
+}
+
+#descripcion {
+    color: var(--gris-texto);
+}
+
+/* ===== Pronóstico ===== */
+.card-pronostico {
+    border: none;
+    border-radius: 16px;
+    background: white;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    min-width: 130px;
+    transition: transform 0.2s ease;
+}
+
+.card-pronostico:hover {
+    transform: translateY(-5px);
+}
+
+.card-pronostico h6 {
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    margin-bottom: 0.3rem;
+}
+
+.card-pronostico img {
+    width: 60px;
+}
+
+.card-pronostico .temp-max {
+    font-weight: bold;
+    color: var(--azul-cielo);
+}
+
+.card-pronostico .temp-min {
+    color: var(--gris-texto);
+}
+
+/* ===== Historial ===== */
+#historial .btn {
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #dfe7f0;
+    color: var(--azul-oscuro);
+    font-size: 0.85rem;
+}
+
+#historial .btn:hover {
+    background-color: var(--azul-cielo);
+    color: white;
+    border-color: var(--azul-cielo);
+}
+
+/* ===== Animación ===== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Footer ===== */
+footer {
+    background: rgba(28, 61, 90, 0.08);
+    color: var(--azul-oscuro);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--azul-cielo);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 576px) {
+    .card-pronostico {
+        min-width: 100px;
+    }
+}

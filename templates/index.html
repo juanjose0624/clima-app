@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima App</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Favicon (nube, en SVG, sin necesitar archivo aparte) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234a90e2'><path d='M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z'/></svg>">
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container py-5">
+
+        <!-- Título -->
+        <div class="text-center mb-4">
+            <h1 class="fw-bold"><i class="bi bi-cloud-sun"></i> Clima App</h1>
+            <p class="text-muted">Consulta el clima actual de cualquier ciudad del mundo</p>
+        </div>
+
+        <!-- Buscador -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="ciudadInput" class="form-control" placeholder="Escribe una ciudad (ej: Medellín)">
+                    <button class="btn btn-primary" id="btnBuscar">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                    <button class="btn btn-outline-secondary" id="btnUbicacion" title="Usar mi ubicación">
+                        <i class="bi bi-geo-alt"></i>
+                    </button>
+                </div>
+                <div id="mensajeError" class="text-danger mt-2 text-center d-none"></div>
+            </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="text-center d-none mb-4">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta de clima actual -->
+        <div id="climaActual" class="row justify-content-center mb-5 d-none">
+            <div class="col-md-6">
+                <div class="card shadow-sm text-center">
+                    <div class="card-body">
+                        <h3 id="ciudadNombre" class="card-title"></h3>
+                        <p id="fechaHoy" class="text-muted mb-3"></p>
+
+                        <img id="iconoClima" src="" alt="icono clima" width="100">
+                        <h1 id="temperatura" class="display-4 fw-bold"></h1>
+                        <p id="descripcion" class="text-capitalize fs-5 mb-4"></p>
+
+                        <div class="row text-start">
+                            <div class="col-6 mb-2">
+                                <i class="bi bi-thermometer-half text-danger"></i>
+                                Sensación: <span id="sensacion"></span>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <i class="bi bi-droplet-half text-primary"></i>
+                                Humedad: <span id="humedad"></span>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <i class="bi bi-wind text-secondary"></i>
+                                Viento: <span id="viento"></span>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <i class="bi bi-speedometer2 text-success"></i>
+                                Presión: <span id="presion"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pronóstico 5 días -->
+        <div id="pronostico" class="row g-3 justify-content-center d-none"></div>
+
+        <!-- Historial de búsquedas -->
+        <div id="historialContenedor" class="text-center mt-5 d-none">
+            <h6 class="text-muted">Búsquedas recientes</h6>
+            <div id="historial" class="d-flex flex-wrap justify-content-center gap-2"></div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <p class="mb-0">
+            Aplicación hecha por <strong>Juan José Sepúlveda Álvarez</strong> y <strong>Sebastián Sierra Vélez</strong>
+        </p>
+        <p class="mb-0">
+            Datos del clima proporcionados por <a href="https://openweathermap.org" target="_blank" rel="noopener">OpenWeatherMap</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS propio -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

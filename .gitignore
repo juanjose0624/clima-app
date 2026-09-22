@@ -1,0 +1,15 @@
+# Variables de entorno (contiene la API key)
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+
+# Editor
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
